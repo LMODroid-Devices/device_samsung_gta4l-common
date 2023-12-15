@@ -158,6 +158,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fastbootd
 
+# Folio
+PRODUCT_PACKAGES += \
+    folio_daemon
+
 # FastCharge
 PRODUCT_PACKAGES += \
     vendor.lineage.fastcharge@1.0-service.samsung
@@ -274,7 +278,8 @@ PRODUCT_PACKAGES += \
 
 # QTI
 PRODUCT_PACKAGES += \
-    libqti_vndfwk_detect.vendor
+    libqti_vndfwk_detect.vendor \
+    libvndfwk_detect_jni.qti.vendor
 
 # Recovery
 PRODUCT_COPY_FILES += \
@@ -283,10 +288,6 @@ PRODUCT_COPY_FILES += \
 # RenderScript HAL
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
-
-# Rotation
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.bootanim.set_orientation_4630946488205922177=ORIENTATION_90
 
 # Seccomp
 PRODUCT_COPY_FILES += \
