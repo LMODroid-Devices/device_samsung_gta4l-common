@@ -15,7 +15,6 @@
 #
 
 # Shipping API level
-BOARD_API_LEVEL := 30
 BOARD_SHIPPING_API_LEVEL := 30
 PRODUCT_SHIPPING_API_LEVEL := 29
 
@@ -23,6 +22,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
+# Add common definitions for Qualcomm
+$(call inherit-product, hardware/qcom-caf/common/common.mk)
 
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/samsung/gta4l-common/gta4l-common-vendor.mk)
@@ -106,6 +108,10 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5-legacy.samsung \
     android.hardware.camera.provider@2.5-service_64.samsung
 
+PRODUCT_PACKAGES += \
+    libexif.vendor:64 \
+    libjpeg.vendor:64
+
 # Charger
 PRODUCT_PACKAGES += \
     libsuspend
@@ -131,6 +137,10 @@ PRODUCT_PACKAGES += \
     init.samsung.rc \
     init.target.rc \
     ueventd.qcom.rc
+
+# Configstore
+PRODUCT_PACKAGES += \
+    disable_configstore
 
 # Display
 PRODUCT_PACKAGES += \
@@ -281,7 +291,10 @@ PRODUCT_PACKAGES += \
 
 # QCOM
 PRODUCT_PACKAGES += \
+    libcurl.vendor:64 \
     libjson \
+    libjsoncpp.vendor:64 \
+    libsqlite.vendor:64 \
     libtinyxml
 
 # QTI
@@ -339,6 +352,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     WifiOverlay \
     android.hardware.wifi-service \
+    firmware_WCNSS_qcom_cfg.ini_symlink \
     hostapd \
     libwifi-hal-qcom \
     libwpa_client \
